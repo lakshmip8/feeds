@@ -1,11 +1,13 @@
 
-<div class="searchBar">
-  <input type="text" [(ngModel)]="feedSearch" class="search-input" placeholder="search ... ">
-  <button type="button" (click)="getFeeds(feedSearch)"> Search</button>
+<div class="search-bar">
+  <input type="text" [(ngModel)]="feedSearch" class="search-input" (keydown.enter)="getFeeds(feedSearch)" placeholder="search ... ">
+  <button type="button" (click)="getFeeds(feedSearch)" class="search-button">
+    <span class="search-icon"></span>
+  </button>
 </div>
 
 <div class="flex-container">
-  <div *ngFor="let photo of feeds.photos.photo" class="flex-items">
+  <div *ngFor="let photo of feeds.photos.photo" >
     <img class="photo" src="https://farm{{photo.farm}}.staticflickr.com/{{photo.server}}/{{photo.id}}_{{photo.secret}}_b.jpg">
   </div>
 </div>
